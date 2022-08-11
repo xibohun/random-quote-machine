@@ -1,0 +1,94 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+       
+    <script>
+
+        const QUOTEBANK = [
+            {
+                quote: " When the power of love overcomes the love of power the world will know peace. ",
+                author: "jimi hendrix"
+            },
+            {
+                quote: "You build on failure. You use it as a stepping stone. Close the door on the past. You don't try to forget the mistakes, but you don't dwell on it. You don't let it have any of your energy, or any of your time, or any of your space. ",
+                author: "johnny cash"
+
+
+            },
+            {
+                quote: " Don't you mind people grinini' in your face ",
+                author: "son house"
+            
+
+            }
+
+
+
+        
+        
+        ];
+
+        window.onload = init;
+        function init(){
+            console.log("JS loaded");
+            generateQuote();
+        }
+        function generateQuote(){
+            let quoteSize = QUOTEBANK.length;
+            let randomIndex = Math.floor(Math.random() * quoteSize)
+            let randomQuoteData = QUOTEBANK[randomIndex]
+            //let quoteInApiFormate= randomQuoteData.quote.replace(/ /g, "%20")
+            twitterlink = "https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=%22"
+            let quoteInApiFormat= randomQuoteData.quote.replace(/ /g, "%20")
+
+
+            twitterlink += quoteInApiFormat
+            let authorInApiFormat = randomQuoteData.author.replace(/ /g, "%20")
+            twitterlink += authorInApiFormat
+            console.log("generate quote");
+            document.getElementById("text").innerText = randomQuoteData.quote;
+            document.getElementById("author").innerText = randomQuoteData.author;
+            document.getElementById("tweet-quote").href = twitterlink;
+
+
+
+        }
+    </script>
+    
+    
+
+</head>
+<body>
+    <div class="container">
+        <div class="row py-5 justify-content-center">
+            <div class="col-md-8 offset-md-3">
+                <wrapper id="quote-box "> 
+                    <div class="card">
+                        <div class="card-header text-center">
+                            Random Quote Machine
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <div id="text"></div>
+                            </h5>
+                            <p class="card-text">
+                                <div id="author"></div>
+                            </p>
+                            <button id="new-quote" onClick="generateQuote()" class="btn btn-block btn-success"> New Quote</button>
+                            <a href="#" id="tweet-quote" target="_blank" class="btn btn-block btn-primary"> tweet quote</a>
+                        </div>
+                    </div>
+                </wrapper>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script> 
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
